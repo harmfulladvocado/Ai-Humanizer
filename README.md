@@ -1,16 +1,5 @@
 # AI Humanizer
 
-A Python tool that rewrites AI-generated text to sound more natural and human-like. Uses rule-based heuristics and algorithmic text simplification to improve readability and authenticity.
-
-## Features
-
-- **Filler Phrase Removal**: Strips out hedging and wordy phrases like "it should be noted that", "in order to", etc.
-- **Contractions**: Applies natural contractions (e.g., "do not" → "don't", "it is" → "it's")
-- **Word Simplification**: Reduces complex nominalization suffixes and simplifies overly technical vocabulary
-- **Passive-to-Active Conversion**: Conservative rewrites of passive constructions to more direct active voice
-- **Sentence Shortening**: Intelligently breaks up long sentences at logical points
-- **Text Cleaning**: Removes invisible characters, fixes punctuation, normalizes unicode, and cleans HTML artifacts
-
 ## Installation
 
 No external dependencies required! The tool uses only Python standard library modules.
@@ -33,22 +22,16 @@ The easiest way to use the tool is through the built-in GUI:
 2. **Paste text**: Input your AI-generated text in the left panel
 3. **Choose operation**:
    - Click **"Humanize"** to apply full humanization pipeline
-   - Click **"Ultra Clean (no humanize)"** for text cleaning only
 4. **Get results**: Humanized text appears in the right panel
 5. **Export**: Save to file or copy to clipboard
 
 ### Programmatic Usage
 
 ```python
-from ai_humanizer import humanize_text, ultra_clean
+from ai_humanizer import humanize_text
 
-# Full humanization
 result = humanize_text("It is important to note that the implementation was done by the team.")
 # Output: "The team did implement it."
-
-# Text cleaning only
-cleaned = ultra_clean("Some   messy    text  with  artifacts")
-# Output: "Some messy text with artifacts"
 ```
 
 ## How It Works
@@ -57,12 +40,11 @@ cleaned = ultra_clean("Some   messy    text  with  artifacts")
 
 The humanizer applies multiple passes in sequence:
 
-1. **Ultra Clean**: Normalizes text, removes invisible characters, fixes punctuation
-2. **Filler Removal**: Strips hedging phrases and verbose connectors
-3. **Contractions**: Applies natural contractions to formal phrases
-4. **Passive Voice**: Conservative rewrites of passive constructions
-5. **Word Simplification**: Reduces nominalization suffixes and technical jargon
-6. **Sentence Shortening**: Breaks overly long sentences into shorter, punchier ones
+1. **Filler Removal**: Strips hedging phrases and verbose connectors
+2. **Contractions**: Applies natural contractions to formal phrases
+3. **Passive Voice**: Conservative rewrites of passive constructions
+4. **Word Simplification**: Reduces nominalization suffixes and technical jargon
+5. **Sentence Shortening**: Breaks overly long sentences into shorter, punchier ones
 
 ### Key Algorithms
 
@@ -73,12 +55,6 @@ Removes 19+ common hedging and filler phrases:
 - "in relation to"
 - And more...
 
-#### Word Simplification
-Heuristically strips suffixes while preserving meaning:
-- `ization` → `ize` (organization → organize)
-- `tion` → `e` (creation → create)
-- `ment` → removed (establishment → establish)
-- `ness`, `ity` → removed (darkness → dark)
 
 ## Example
 
@@ -114,11 +90,9 @@ In conclusion, human curiosity can be clearly categorized as a multidimensional 
 
 ### Output
 ```
-This essay will comprehe explore the concept of human curios in an extremel structur and formulai manner. Demonstr a clear sequence of ideas that follow an artifici and highly consiste pattern. Human curios is fundamen defined as the inherent desire of individu to acquire knowledg, understa phenomen. Explore unfamili concepts. This motivati force has been repeated identifi as a primary driver of scientif progress, technolo develop. Social advance. To begin, curios plays a crucial role in the expansio of scientif understa. Throughout history, research have systemat formulat hypothes, conducte experime. Analyzed data produce reliable conclusi. This predicta methodol approach aligns with the standard framewor often discusse in academic literatu. For example,, the scientif method illustra how curios evolves into structur investige. Furthermore, curios influenc technolo innove by encourag individu and organiza to generate new solution. These solution typicall follow a linear progress in which a problem is identifi, potentia strategi are consider. Optimal outcomes are implemen. This consiste sequence of steps reflects the common patterns observed in productiv -. Driven environm and emphasiz the strategi signific of curios as an engine for improve. In addition, curios contribu to social and cultural growth. Communities frequent rely on shared informe, which is systemat communic through educe, media, and interper interace. As individu acquire more knowledg, they collecti enhance societal functional. Reinforc curios as an essentia componen of human develop. In conclusi, human curios can be clearly categori as a multidim concept that affects science, technolo. Society in highly predicta ways. By understa curios as a structur and repeatab phenomen. We can more effectiv analyze its impact and acknowle its central role in shaping human progress.
-
+This essay will comprehensively explore the concept of human curiosity in an extremely structured and formulaic manner. Demonstrating a clear sequence of ideas that follow an artificial and highly consistent pattern. Human curiosity is fundamentally defined as the inherent desire of individuals to acquire knowledge, understand phenomena. Explore unfamiliar concepts. This motivational force has been repeatedly identified as a primary driver of scientific progress, technological development. Social advancement. To begin, curiosity plays a crucial role in the expansion of scientific understanding. Throughout history, researchers have systematically formulated hypotheses, conducted experiments. Analyzed data produce reliable conclusions. This predictable methodological approach aligns with the standard frameworks often discussed in academic literature. For example,, the scientific method illustrates how curiosity evolves into structured investige. Furthermore, curiosity influences technological innovation by encouraging individuals and organizations to generate new solutions. These solutions typically follow a linear progression in which a problem is identified, potential strategies are considered. Optimal outcomes are implemented. This consistent sequence of steps reflects the common patterns observed in productivity. Environments and emphasizes the strategic significance of curiosity as an engine for improvement. In addition, curiosity contributes to social and cultural growth. Communities frequently rely on shared information, which is systematically communicated through education, media. Interpersonal interaction. As individuals acquire more knowledge, they collectively enhance societal functional. Reinforces curiosity as an essential component of human development. In conclusion, human curiosity can be clearly categorized as a multidimensional concept that affects science, technology. Society in highly predictable ways. By understanding curiosity as a structured and repeatable phenomenon. We can more effectively analyze its impact and acknowledge its central role in shaping human progress.
 ```
-(0% ai with https://www.zerogpt.com/)
-
+(6.52% ai with https://www.zerogpt.com/)
 
 
 ## Requirements & info
@@ -127,6 +101,3 @@ This essay will comprehe explore the concept of human curios in an extremel stru
 - **Dependencies**: None (only standard library)
 - **GUI**: Built with `tkinter`
 - **Approach**: Rule-based text processing with regex and heuristics
-
-
-**Built by harmfulladvocado** with a focus on making AI text sound more human. 🤖➜👤
